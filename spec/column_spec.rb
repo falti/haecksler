@@ -59,5 +59,32 @@ module Haecksler
         expect(subject.parse("x  ").value).to be_a TypeError
       end
     end
+
+    describe "Date column" do
+      subject do
+        Column.new(name: "I1", size: 8, type: :date)
+      end
+
+      it "should handle date column" do
+        expect(subject.parse("20130304").value).to eq Date.new(2013,3,4)
+      end
+
+      it "should respect date format" do
+        c = Column.new(name:"I2", size: 10, type: :date, date_format: '%d.%m.%Y')
+        expect(c.parse("03.12.2008").value).to eq Date.new(2008,12,3)
+      end
+    end
+
+    describe "DateTime column" do
+      subject do
+        Column.new(name: "I1", size: 8, type: :datetime)
+      end
+
+      it "should handle date column" do
+        expect(subject.parse("20130304").value).to eq DateTime.new(2013,3,4)
+      end
+
+    end
+
   end
 end
