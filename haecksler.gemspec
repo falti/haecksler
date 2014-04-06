@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Haecksler::VERSION
   spec.authors       = ["Frank Falkenberg"]
   spec.email         = ["faltibrain@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.summary       = %q{Library to parse fixed-length files}
+  spec.description   = %q{Haecksler is the German word for a wood chipper}
+  spec.homepage      = "https://github.com/falti/haecksler"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
