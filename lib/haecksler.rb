@@ -1,5 +1,3 @@
 require "haecksler/version"
-
-module Haecksler
-  # Your code goes here...
-end
+require "haecksler/column"
+require "haecksler/row"
