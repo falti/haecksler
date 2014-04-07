@@ -6,6 +6,11 @@ module Haecksler
       expect(subject.columns).to have(0).things
     end
 
+    it "should not be header or footer" do
+      expect(subject).not_to be_header
+      expect(subject).not_to be_footer
+    end
+
     it "should receive more columns" do
       subject << Column.new(name: "Name", size: 10)
       expect(subject.columns).to have(1).thing
@@ -49,5 +54,19 @@ module Haecksler
       expect(parsed_result["Unknown"]).to be_nil
     end
 
+  end
+
+  describe HeaderRow do
+    it "should behave as header" do
+      expect(subject).to be_header
+      expect(subject).not_to be_footer
+    end
+  end
+
+  describe FooterRow do
+    it "should behave as footer" do
+      expect(subject).not_to be_header
+      expect(subject).to be_footer
+    end
   end
 end
