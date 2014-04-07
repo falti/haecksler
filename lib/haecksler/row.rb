@@ -1,4 +1,5 @@
 module Haecksler
+
   class Row
     attr_reader :columns
 
@@ -36,5 +37,26 @@ module Haecksler
       self
 
     end
+
+    def header?
+      false
+    end
+
+    def footer?
+      false
+    end
   end
+
+  class HeaderRow < Row
+    def header?
+      true
+    end
+  end
+
+  class FooterRow < Row
+    def footer?
+      true
+    end
+  end
+
 end
