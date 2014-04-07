@@ -18,10 +18,10 @@ module Haecksler
 
       parsed_result = subject.parse("Frank     AB")
 
-      expect(parsed_result).to have(2).things
+      expect(parsed_result.columns).to have(2).things
 
-      expect(parsed_result.first.value).to eq "Frank"
-      expect(parsed_result.last.value).to eq "AB"
+      expect(parsed_result.columns.first.value).to eq "Frank"
+      expect(parsed_result.columns.last.value).to eq "AB"
     end
 
     it "should parse a row with UTF" do
@@ -30,11 +30,23 @@ module Haecksler
 
       parsed_result = subject.parse("Fränk     €B")
 
-      expect(parsed_result).to have(2).things
+      expect(parsed_result.columns).to have(2).things
 
-      expect(parsed_result.first.value).to eq "Fränk"
-      expect(parsed_result.last.value).to eq "€B"
+      expect(parsed_result.columns.first.value).to eq "Fränk"
+      expect(parsed_result.columns.last.value).to eq "€B"
 
+    end
+
+    it "should have Hash like access" do
+      subject << Column.new(name: "Name", size: 3)
+      parsed_result = subject.parse("ABC")
+      expect(parsed_result["Name"]).to eq("ABC")
+    end
+
+    it "should return nil for unknown key" do
+      subject << Column.new(name: "Name", size: 3)
+      parsed_result = subject.parse("ABC")
+      expect(parsed_result["Unknown"]).to be_nil
     end
 
   end

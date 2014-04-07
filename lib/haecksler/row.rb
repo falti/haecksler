@@ -10,6 +10,14 @@ module Haecksler
       @columns << column
     end
 
+    def [](key)
+      begin
+        @columns.find{|c| c.name == key }.value
+      rescue
+        nil
+      end
+    end
+
     def parse(input)
 
       indizes = columns.map(&:size).reduce([0]) do |memo,item|
@@ -24,6 +32,8 @@ module Haecksler
       end
 
       @columns = parsed_columns
+
+      self
 
     end
   end

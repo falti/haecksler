@@ -35,7 +35,14 @@ module Haecksler
 
         File.open(File.expand_path("../simple.txt",__FILE__)) do |f|
           s = Sheet.new(f, row: @row)
+          expect(s).to be_an Enumerable
+          first = s.first
+          expect(first).not_to be_nil
+          expect(first["Name"]).to eq "Frank"
+          f.rewind
           expect(s).to have(2).things
+
+
         end
       end
 
