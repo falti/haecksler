@@ -18,22 +18,24 @@ Or install it yourself as:
 
 ## Usage
 
-    file = File.open(File.expand_path("../complete.txt",__FILE__))
+```ruby
+file = File.open(File.expand_path("../complete.txt",__FILE__))
 
-    result = Haecksler.chop(file) do |h|
+result = Haecksler.chop(file) do |h|
 
-      h.header_trap {|header| header =~/^FILE/ }
-      h.header "HName", 4
-      h.header "HExtra", 6
+  h.header_trap {|header| header =~/^FILE/ }
+  h.header "HName", 4
+  h.header "HExtra", 6
 
-      h.column "Id", 2, :integer
-      h.column "Name", 10
-      h.column "Date", 8, :date
+  h.column "Id", 2, :integer
+  h.column "Name", 10
+  h.column "Date", 8, :date
 
-      h.footer_trap {|footer| footer =~/^END/ }
-      h.footer "FFooter", 3
-      h.footer "FDate", 8, :date
-    end
+  h.footer_trap {|footer| footer =~/^END/ }
+  h.footer "FFooter", 3
+  h.footer "FDate", 8, :date
+end
+```
 
 ## Contributing
 
