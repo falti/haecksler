@@ -1,6 +1,7 @@
 # Haecksler
 
 [![Code Climate](https://codeclimate.com/github/falti/haecksler.png)](https://codeclimate.com/github/falti/haecksler)
+[![Build Status](https://travis-ci.org/falti/haecksler.svg?branch=master)](https://travis-ci.org/falti/haecksler)
 
 TODO: Write a gem description
 
