@@ -3,6 +3,7 @@
 [![Code Climate](https://codeclimate.com/github/falti/haecksler.png)](https://codeclimate.com/github/falti/haecksler)
 [![Build Status](https://travis-ci.org/falti/haecksler.svg?branch=master)](https://travis-ci.org/falti/haecksler)
 [![Dependency Status](https://gemnasium.com/falti/haecksler.svg)](https://gemnasium.com/falti/haecksler)
+[![Coverage Status](https://coveralls.io/repos/falti/haecksler/badge.png?branch=master)](https://coveralls.io/r/falti/haecksler)
 
 
 Read fixed-length files:
