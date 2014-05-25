@@ -11,6 +11,10 @@ module Haecksler
       @type = column.type
     end
 
+    def ==(another_type_error)
+      self.value == another_type_error.value && self.type == another_type_error.type
+    end
+
     def to_s
       "Could not parse '#{value}' to '#{type}"
     end

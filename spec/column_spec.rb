@@ -41,6 +41,7 @@ module Haecksler
 
       it "should yield a TypeError for wrong type column" do
         expect(subject.parse("x ").value).to be_a TypeError
+        expect(subject.parse("x ").value).to eq TypeError.new("x ",subject)
       end
 
     end
@@ -57,6 +58,7 @@ module Haecksler
 
       it "should yield a TypeError for wrong type column" do
         expect(subject.parse("x  ").value).to be_a TypeError
+        expect(subject.parse("x").value).to eq TypeError.new("x",subject)
       end
     end
 
@@ -73,6 +75,11 @@ module Haecksler
         c = Column.new(name:"I2", size: 10, type: :date, date_format: '%d.%m.%Y')
         expect(c.parse("03.12.2008").value).to eq Date.new(2008,12,3)
       end
+
+      it "should fail to parse if date format was not followed" do
+        c = Column.new(name:"I2", size: 10, type: :date, date_format: '%d.%m.%Y')
+        expect(c.parse("2008/03/12").value).to eq TypeError.new("2008/03/12", c)
+      end
     end
 
     describe "DateTime column" do
@@ -80,13 +87,17 @@ module Haecksler
         Column.new(name: "I1", size: 8, type: :datetime)
       end
 
-      it "should handle date column" do
+      it "should handle datetime column" do
         expect(subject.parse("20130304").value).to eq DateTime.new(2013,3,4)
+      end
+
+      it "should fail to parse non-datetime column" do
+        expect(subject.parse("xxx").value).to eq TypeError.new("xxx",subject)
       end
 
     end
 
-    describe "Nil row" do
+    describe "Nil column" do
       subject do
         Column.new(name: "Nil", size: 3, type: :nil)
       end
