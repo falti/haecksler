@@ -5,7 +5,12 @@
 [![Dependency Status](https://gemnasium.com/falti/haecksler.svg)](https://gemnasium.com/falti/haecksler)
 
 
-TODO: Write a gem description
+Read fixed-length files:
+
+```
+01A Name    20130101SKIPA
+```
+Support lazy processing so it's possible to read very large files as well.
 
 ## Installation
 
