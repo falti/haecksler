@@ -107,5 +107,16 @@ module Haecksler
       end
     end
 
+    describe TypeError do
+      subject do
+        column = double("column", :type => :string)
+        TypeError.new("x",column)
+      end
+
+      it "should give a nice to_s" do
+        expect(subject.to_s).to eq "Could not parse 'x' to 'string"
+      end
+    end
+
   end
 end
