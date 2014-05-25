@@ -91,6 +91,11 @@ module Haecksler
         expect(subject.parse("20130304").value).to eq DateTime.new(2013,3,4)
       end
 
+      it "should respect datetime format" do
+        c = Column.new(name:"I2", size: 10, type: :datetime, date_format: '%d.%m.%Y')
+        expect(c.parse("03.12.2008").value).to eq DateTime.new(2008,12,3)
+      end
+
       it "should fail to parse non-datetime column" do
         expect(subject.parse("xxx").value).to eq TypeError.new("xxx",subject)
       end
