@@ -39,6 +39,8 @@ module Haecksler
 
       parsed.value = begin
         case type
+        when :nil
+          nil
         when :string
           String(string_value).rstrip
         when :integer

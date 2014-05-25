@@ -82,6 +82,28 @@ module Haecksler
 
     end
 
+    it "should skip certain values" do
+      data_with_skip = [
+        "01FrankXXX20080305XXXA",
+        "02Sam  XXX20091205XXXB"
+      ]
+      result = Haecksler.chop(data_with_skip) do |h|
+        h.column "Id", 2, :integer
+        h.column "Name", 5, :string
+        h.skip 3
+        h.column "Date", 8, :date
+        h.skip 3
+        h.column "Letter", 1, :string
+      end
+
+      first = result.first
+      expect(first["Id"]).to eq 1
+      expect(first["Name"]).to eq "Frank"
+      expect(first["Date"]).to eq Date.new(2008,3,5)
+      expect(first["Letter"]).to eq "A"
+
+    end
+
 
   end
 end

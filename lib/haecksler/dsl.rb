@@ -22,6 +22,11 @@ module Haecksler
       @row << _column(name, size, type, date_format)
     end
 
+    def skip(size)
+      l = @row.columns.length
+      @row << _column("___skip#{l}", size, :nil, nil)
+    end
+
     def header_trap(&proc)
       @header_check = proc
     end

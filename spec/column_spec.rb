@@ -86,5 +86,15 @@ module Haecksler
 
     end
 
+    describe "Nil row" do
+      subject do
+        Column.new(name: "Nil", size: 3, type: :nil)
+      end
+
+      it "should handle nil column" do
+        expect(subject.parse("XXX").value).to eq nil
+      end
+    end
+
   end
 end
