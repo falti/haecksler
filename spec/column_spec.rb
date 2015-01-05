@@ -112,6 +112,16 @@ module Haecksler
       end
     end
 
+    describe "Unhandled Column" do
+      subject do
+        Column.new(name: "Unknown", size: 3, type: :something_i_dont_know)
+      end
+
+      it "should handle nil column" do
+        expect(subject.parse("XXX").value).to eq nil
+      end
+    end
+
     describe TypeError do
       subject do
         column = double("column", :type => :string)
