@@ -113,6 +113,8 @@ module Haecksler
       end
 
       first = result.first
+      expect(first["Name"]).to eq "Name"
+      expect(first["Fruit"]).to eq "Banana"
 
     end
   end
