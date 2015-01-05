@@ -29,7 +29,6 @@ module Haecksler
         memo
       end
 
-
       slices = input.split(//).each_with_index.slice_before { | element | indizes.include? element[1] }
 
       parsed_columns = slices.map {|slice| slice.map{|i| i[0]}.join("")}.zip(columns).map do |text, column|
@@ -39,7 +38,6 @@ module Haecksler
       @columns = parsed_columns
 
       self
-
     end
 
     def header?
