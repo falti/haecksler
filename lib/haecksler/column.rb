@@ -52,17 +52,9 @@ module Haecksler
         when :float
           Float(string_value)
         when :date
-          if date_format.nil?
-            Date.parse(string_value)
-          else
-            Date.strptime(string_value, date_format)
-          end
+          parse_date(Date, string_value)
         when :datetime
-          if date_format.nil?
-            DateTime.parse(string_value)
-          else
-            DateTime.strptime(string_value, date_format)
-          end
+          parse_date(DateTime, string_value)
         else
           nil
         end
@@ -71,6 +63,14 @@ module Haecksler
       end
 
       parsed
+    end
+
+    def parse_date(clazz, string_value)
+      if date_format.nil?
+        clazz.parse(string_value)
+      else
+        clazz.strptime(string_value, date_format)
+      end
     end
   end
 end
