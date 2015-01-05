@@ -18,6 +18,14 @@ module Haecksler
       self
     end
 
+    def header_row
+      @header ||= HeaderRow.new
+    end
+
+    def footer_row
+      @footer ||= FooterRow.new
+    end
+
     def column(name, size, type=:string, date_format=nil)
       @row << _column(name, size, type, date_format)
     end
@@ -36,22 +44,20 @@ module Haecksler
     end
 
     def header(name, size, type=:string, date_format=nil)
-      @header ||= HeaderRow.new
-      @header << _column(name, size, type, date_format)
+      header_row << _column(name, size, type, date_format)
     end
 
     def footer(name, size, type=:string, date_format=nil)
-      @footer ||= FooterRow.new
-      @footer << _column(name, size, type, date_format)
+      footer_row << _column(name, size, type, date_format)
     end
 
     def parse!
       Sheet.new(@input, {
         row: @row,
         header_check: @header_check,
-        header: @header,
+        header: header_row,
         footer_check: @footer_check,
-        footer: @footer}
+        footer: footer_row}
       )
     end
 
