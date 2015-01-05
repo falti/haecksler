@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Frank Falkenberg"]
   spec.email         = ["faltibrain@gmail.com"]
   spec.summary       = %q{Library to parse fixed-length files}
-  spec.description   = %q{Haecksler is the German word for a wood chipper}
+  spec.description   = %q{Haecksler is the German word for a wood chipper, the library processes fixed-length files}
   spec.homepage      = "https://github.com/falti/haecksler"
   spec.license       = "MIT"
 
