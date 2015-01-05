@@ -21,6 +21,9 @@ module Haecksler
 
     def parse(input)
 
+      total_number_of_characters = columns.map(&:size).reduce(&:+)
+      input = input.slice(0, total_number_of_characters)
+
       indizes = columns.map(&:size).reduce([0]) do |memo,item|
         memo << (memo.last.to_i + item)
         memo
@@ -35,7 +38,6 @@ module Haecksler
       @columns = parsed_columns
 
       self
-
     end
 
     def header?

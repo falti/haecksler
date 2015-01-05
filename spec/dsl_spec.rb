@@ -104,6 +104,18 @@ module Haecksler
 
     end
 
+    it "should allow to ignore trailing garbage" do
+      data = ["Name   SomethingElse   Banana   Idontcare atall whatgoes here"]
+      result = Haecksler.chop(data) do |h|
+        h.column "Name", 7
+        h.skip 16
+        h.column "Fruit", 9
+      end
 
+      first = result.first
+      expect(first["Name"]).to eq "Name"
+      expect(first["Fruit"]).to eq "Banana"
+
+    end
   end
 end
